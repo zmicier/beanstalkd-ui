@@ -1,0 +1,30 @@
+{
+    "name": "nickurt/beanstalkd-ui",
+    "description": "Beanstalkd UI (Admin)",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "beanstalkd",
+        "beanstalkd-ui",
+        "beanstalkd admin"
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zend-mvc": "~2.2",
+        "zendframework/zend-servicemanager": "~2.2",
+        "zendframework/zend-stdlib": "~2.2",
+        "pda/pheanstalk": "2.*"
+    },
+    "require-dev" : {
+        "slm/queue": "0.3.*",
+        "slm/queue-beanstalkd": "0.3.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "ZfBeanstalkdUI": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}

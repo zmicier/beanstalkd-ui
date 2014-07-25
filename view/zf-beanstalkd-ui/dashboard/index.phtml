@@ -1,0 +1,38 @@
+
+<div class='row'>
+	<div class='col-md-12'>
+		<h2><?php echo $this->translate("Beanstalkd"); ?></h2>
+
+		<table class='table table-hover'>
+			<thead>
+				<tr>
+					<th><?php echo $this->translate("Name"); ?></th>
+					<th><?php echo $this->translate("Urgent"); ?></th>
+					<th><?php echo $this->translate("Ready"); ?></th>
+					<th><?php echo $this->translate("Reserved"); ?></th>
+					<th><?php echo $this->translate("Delayed"); ?></th>
+					<th><?php echo $this->translate("Buried"); ?></th>
+					<th><?php echo $this->translate("Total"); ?></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<?php foreach($stats as $stat) { ?>
+					<tr>
+						<td>
+							<a href='<?php echo $this->url('zf-beanstalkd-tupe', ['tube' => $stat->__get('name')]); ?>'>
+								<?php echo($stat->__get('name')); ?>
+							</a>
+						</td>
+
+						<td><?php echo($stat->__get('current-jobs-urgent')); ?></td>
+					    <td><?php echo($stat->__get('current-jobs-ready')); ?></td>
+					    <td><?php echo($stat->__get('current-jobs-reserved')); ?></td>
+					    <td><?php echo($stat->__get('current-jobs-delayed')); ?></td>
+					    <td><?php echo($stat->__get('current-jobs-buried')); ?></td>
+					    <td><?php echo($stat->__get('total-jobs')); ?></td>
+					</tr>
+				<?php } ?>
+		</table>
+	</div>
+</div>

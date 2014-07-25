@@ -1,0 +1,198 @@
+
+<div class='row'>
+	<div class='col-md-12'>
+		<h2><?php echo($stats->__get('name')); ?></h2>
+
+		<table class='table table-hover'>
+			<thead>
+				<tr>
+					<th><?php echo $this->translate("Name"); ?></th>
+					<th><?php echo $this->translate("Urgent"); ?></th>
+					<th><?php echo $this->translate("Ready"); ?></th>
+					<th><?php echo $this->translate("Reserved"); ?></th>
+					<th><?php echo $this->translate("Delayed"); ?></th>
+					<th><?php echo $this->translate("Buried"); ?></th>
+					<th><?php echo $this->translate("Total"); ?></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td><?php echo($stats->__get('name')); ?></td>
+
+					<td><?php echo($stats->__get('current-jobs-urgent')); ?></td>
+				    <td><?php echo($stats->__get('current-jobs-ready')); ?></td>
+				    <td><?php echo($stats->__get('current-jobs-reserved')); ?></td>
+				    <td><?php echo($stats->__get('current-jobs-delayed')); ?></td>
+				    <td><?php echo($stats->__get('current-jobs-buried')); ?></td>
+				    <td><?php echo($stats->__get('total-jobs')); ?></td>
+				</tr>
+		</table>
+	</div>
+</div>
+
+<div class='row'>
+	<div class='col-md-12'>
+		<h3><?php echo $this->translate("Ready"); ?></h3>
+
+		<?php if(!$ready) { ?>
+			<div class='alert alert-danger'><?php echo $this->translate("There are no ready jobs"); ?></div>
+		<?php } else { ?>
+			<div class='row'>
+				<div class='col-md-4'>
+					<table class='table table-hover'>
+						<tbody>
+							<tr>
+								<td><?php echo $this->translate("ID"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($ready->getId())->__get('id'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("Priority"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($ready->getId())->__get('pri'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("Age"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($ready->getId())->__get('age'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("Delay"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($ready->getId())->__get('delay'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("TTR"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($ready->getId())->__get('ttr'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("Time-left"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($ready->getId())->__get('time-left'); ?></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class='col-md-8'>
+					<pre><code><?php print_r(json_decode($ready->getData(), true)); ?></code></pre>
+
+					<a class='btn btn-danger pull-right' href='<?php echo $this->url('zf-beanstalkd-tupe-jobs-delete', ['tube' => $stats->__get('name'), 'id'=> $pheanstalk->statsJob($ready->getId())->__get('id')]); ?>'>
+						<?php echo $this->translate("Delete"); ?>
+					</a>
+				</div>
+			</div>
+		<?php } ?> 
+	</div>
+</div>
+
+<div class='row'>
+	<div class='col-md-12'>
+		<h3><?php echo $this->translate("Delayed"); ?></h3>
+
+		<?php if(!$delayed) { ?>
+			<div class='alert alert-danger'><?php echo $this->translate("There are no delayed jobs"); ?></div>
+		<?php } else { ?>
+			<div class='row'>
+				<div class='col-md-4'>
+					<table class='table table-hover'>
+						<tbody>
+							<tr>
+								<td><?php echo $this->translate("ID"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($delayed->getId())->__get('id'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("Priority"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($delayed->getId())->__get('pri'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("Age"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($delayed->getId())->__get('age'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("Delay"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($delayed->getId())->__get('delay'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("TTR"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($delayed->getId())->__get('ttr'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("Time-left"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($delayed->getId())->__get('time-left'); ?></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class='col-md-8'>
+					<pre><code><?php print_r(json_decode($delayed->getData(), true)); ?></code></pre>
+
+					<a class='btn btn-danger pull-right' href='<?php echo $this->url('zf-beanstalkd-tupe-jobs-delete', ['tube' => $stats->__get('name'), 'id'=> $pheanstalk->statsJob($delayed->getId())->__get('id')]); ?>'>						<?php echo $this->translate("Delete"); ?>
+					</a>
+				</div>
+			</div>
+		<?php } ?> 
+	</div>
+</div>
+
+<div class='row'>
+	<div class='col-md-12'>
+		<h3><?php echo $this->translate("Buried"); ?></h3>
+
+		<?php if(!$buried) { ?>
+			<div class='alert alert-danger'><?php echo $this->translate("There are no buried jobs"); ?></div>
+		<?php } else { ?>
+			<div class='row'>
+				<div class='col-md-4'>
+					<table class='table table-hover'>
+						<tbody>
+							<tr>
+								<td><?php echo $this->translate("ID"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($buried->getId())->__get('id'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("Priority"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($buried->getId())->__get('pri'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("Age"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($buried->getId())->__get('age'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("Delay"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($buried->getId())->__get('delay'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("TTR"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($buried->getId())->__get('ttr'); ?></td>
+							</tr>
+
+							<tr>
+								<td><?php echo $this->translate("Time-left"); ?></td>
+								<td><?php echo $pheanstalk->statsJob($buried->getId())->__get('time-left'); ?></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class='col-md-8'>
+					<pre><code><?php print_r(json_decode($buried->getData(), true)); ?></code></pre>
+
+					<a class='btn btn-danger pull-right' href='<?php echo $this->url('zf-beanstalkd-tupe-jobs-delete', ['tube' => $stats->__get('name'), 'id'=> $pheanstalk->statsJob($buried->getId())->__get('id')]); ?>'>						<?php echo $this->translate("Delete"); ?>
+					</a>
+				</div>
+			</div>
+		<?php } ?> 
+	</div>
+</div>
