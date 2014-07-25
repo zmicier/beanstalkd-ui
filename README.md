@@ -26,3 +26,8 @@ return array(
     // ...
 );
 ```
+
+### Examples
+
+![Example1](https://raw.githubusercontent.com/nickurt/beanstalkd-ui/master/examples/example1.png)
+![Example2](https://raw.githubusercontent.com/nickurt/beanstalkd-ui/master/examples/example2.png)
