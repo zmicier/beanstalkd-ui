@@ -40,6 +40,36 @@ return array(
                             ),
                         ),
                     ),
+                    'tupe-jobs-move' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:tube]/jobs/[:id]/move/[:from]/[:to]',
+                            'constraints' => array(
+                                'tube'  =>  '[a-z0-9]+',
+                                'id'    =>  '[0-9]+',
+                                'from'  =>  '(ready)',
+                                'to'    =>  '(buried)',
+                            ),
+                            'defaults' => array(
+                                'controller' => 'ZfBeanstalkdUI\Controller\Jobs',
+                                'action'     => 'move',
+                            ),
+                        ),
+                    ),
+                    'tupe-jobs-kick' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:tube]/jobs/[:count]/kick',
+                            'constraints' => array(
+                                'tube'  =>  '[a-z0-9]+',
+                                'count' =>  '[0-9]+',
+                            ),
+                            'defaults' => array(
+                                'controller' => 'ZfBeanstalkdUI\Controller\Jobs',
+                                'action'     => 'kick',
+                            ),
+                        ),
+                    ),
                 ),
             ),
         ),
