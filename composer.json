@@ -9,7 +9,6 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zf2": ">2.3.*",
         "pda/pheanstalk": "2.*"
     },
     "suggest": {
