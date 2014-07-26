@@ -11,31 +11,34 @@ return array(
                         'action'     => 'index',
                     ),
                 ),
-            ),
-            'zf-beanstalkd-tupe' => array(
-                'type' => 'Segment',
-                'options' => array(
-                    'route'    => '/beanstalkd/[:tube]',
-                    'constraints' => array(
-                        'tube'  =>  '[a-z0-9]+',
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'tupe' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:tube]',
+                            'constraints' => array(
+                                'tube'  =>  '[a-z0-9]+',
+                            ),
+                            'defaults' => array(
+                                'controller' => 'ZfBeanstalkdUI\Controller\Dashboard',
+                                'action'     => 'tube',
+                            ),
+                        ),
                     ),
-                    'defaults' => array(
-                        'controller' => 'ZfBeanstalkdUI\Controller\Dashboard',
-                        'action'     => 'tube',
-                    ),
-                ),
-            ),
-            'zf-beanstalkd-tupe-jobs-delete' => array(
-                'type' => 'Segment',
-                'options' => array(
-                    'route'    => '/beanstalkd/[:tube]/jobs/[:id]/delete',
-                    'constraints' => array(
-                        'tube'  =>  '[a-z0-9]+',
-                        'id'    =>  '[0-9]+',
-                    ),
-                    'defaults' => array(
-                        'controller' => 'ZfBeanstalkdUI\Controller\Jobs',
-                        'action'     => 'delete',
+                    'tupe-jobs-delete' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:tube]/jobs/[:id]/delete',
+                            'constraints' => array(
+                                'tube'  =>  '[a-z0-9]+',
+                                'id'    =>  '[0-9]+',
+                            ),
+                            'defaults' => array(
+                                'controller' => 'ZfBeanstalkdUI\Controller\Jobs',
+                                'action'     => 'delete',
+                            ),
+                        ),
                     ),
                 ),
             ),

@@ -1,0 +1,16 @@
+<?php
+return array(
+    'router' => array(
+        'routes' => array(
+            'zf-beanstalkd' => array(
+                'options' => array(
+                    'route' => '/zf-beanstalkd',
+                ),
+                'defaults' => array(
+                    'controller'    => 'ZfBeanstalkdUI\Controller\Dashboard',
+                    'action'        => 'index',
+                ),
+            )
+        )
+    )    
+);

@@ -26,7 +26,7 @@ class JobsController extends AbstractActionController
             $this->getResponse()->setStatusCode(404); return; 
         }
 
-        return $this->redirect()->toRoute('zf-beanstalkd-tupe', ['tube' => $tube]);
+        return $this->redirect()->toRoute('zf-beanstalkd/tupe', ['tube' => $tube]);
     }
 
     public function searchAction() {}

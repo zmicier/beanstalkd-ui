@@ -20,7 +20,7 @@
 				<?php foreach($stats as $stat) { ?>
 					<tr>
 						<td>
-							<a href='<?php echo $this->url('zf-beanstalkd-tupe', ['tube' => $stat->__get('name')]); ?>'>
+							<a href='<?php echo $this->url('zf-beanstalkd/tupe', ['tube' => $stat->__get('name')]); ?>'>
 								<?php echo($stat->__get('name')); ?>
 							</a>
 						</td>
