@@ -29,7 +29,7 @@ class Create implements InputFilterAwareInterface
           'validators' => [
             [
               'name'    => 'StringLength',
-              'options' => ['min' => 2, 'max' => 4096],
+              'options' => ['min' => 2, 'max' => 65536],
             ],
           ],
         ]
@@ -46,7 +46,7 @@ class Create implements InputFilterAwareInterface
           'validators' => [
             [
               'name'    => 'Between',
-              'options' => ['min' => 0, 'max' => 4096],
+              'options' => ['min' => 0, 'max' => 4294967295],
             ],
           ],
         ]
@@ -63,7 +63,7 @@ class Create implements InputFilterAwareInterface
           'validators' => [
             [
               'name'    => 'Between',
-              'options' => ['min' => 0, 'max' => 4096],
+              'options' => ['min' => 0, 'max' => 172800],
             ],
           ],
         ]
@@ -80,7 +80,7 @@ class Create implements InputFilterAwareInterface
           'validators' => [
             [
               'name'    => 'Between',
-              'options' => ['min' => 0, 'max' => 4096],
+              'options' => ['min' => 0, 'max' => 172800],
             ],
           ],
         ]
