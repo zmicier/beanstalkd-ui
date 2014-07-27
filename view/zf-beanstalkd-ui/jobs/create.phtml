@@ -1,0 +1,50 @@
+<div class='row'>	
+	<div class='col-md-12'>
+		<h2><?php echo $this->translate('Create job'); ?></h2>
+		
+		<?php 
+			$form = $this->form;
+			$form->setAttribute('action', $this->url(
+			    'zf-beanstalkd/tupe-jobs-create', ['tube' => $tube]
+			));
+			$form->prepare();
+			echo $this->form()->openTag($form);
+		?>
+			<div class="form-group">
+		    	<?php echo $this->formLabel($form->get('data'), $form->get('data')->getOption('label')); ?>
+		    	<?php echo $this->formTextarea($form->get('data')); ?>
+		    	<p class="help-block"></p>
+		    	<?php echo $this->formelementerrors($form->get('data'), ['class' => $form->get('data')->getOption('errorClass')]); ?>
+		  	</div>
+
+		  	<div class="form-group">
+		    	<?php echo $this->formLabel($form->get('priority'), $form->get('priority')->getOption('label')); ?>
+		    	<?php echo $this->formInput($form->get('priority')); ?>
+		    	<p class="help-block"></p>
+		    	<?php echo $this->formelementerrors($form->get('priority'), ['class' => $form->get('priority')->getOption('errorClass')]); ?>
+		  	</div>
+
+		  	<div class="form-group">
+		    	<?php echo $this->formLabel($form->get('delay'), $form->get('delay')->getOption('label')); ?>
+		    	<?php echo $this->formInput($form->get('delay')); ?>
+		    	<p class="help-block"></p>
+		    	<?php echo $this->formelementerrors($form->get('delay'), ['class' => $form->get('delay')->getOption('errorClass')]); ?>
+		  	</div>
+
+		  	<div class="form-group">
+		    	<?php echo $this->formLabel($form->get('ttr'), $form->get('ttr')->getOption('label')); ?>
+		    	<?php echo $this->formInput($form->get('ttr')); ?>
+		    	<p class="help-block"></p>
+		    	<?php echo $this->formelementerrors($form->get('ttr'), ['class' => $form->get('ttr')->getOption('errorClass')]); ?>
+		  	</div>
+		  	
+		  	<div class="form-group">
+		  		<?php echo $this->formInput($form->get('token')); ?>		 
+		    	<?php echo $this->formInput($form->get('submit')); ?>
+		  	</div>
+		  	
+		<?php 
+			echo $this->form()->closeTag();
+		?>
+	</div>
+</div>

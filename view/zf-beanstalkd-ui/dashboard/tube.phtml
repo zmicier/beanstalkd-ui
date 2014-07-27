@@ -1,4 +1,3 @@
-
 <div class='row'>
 	<div class='col-md-12'>
 		<h2><?php echo($stats->__get('name')); ?></h2>
@@ -28,6 +27,16 @@
 				    <td><?php echo($stats->__get('total-jobs')); ?></td>
 				</tr>
 		</table>
+	</div>
+
+	<div class='col-md-12'>
+		<a class='btn btn-success' href='<?php echo $this->url('zf-beanstalkd/tupe-jobs-create', ['tube' => $stats->__get('name')]); ?>'>
+			<?php echo $this->translate("Create job"); ?>
+		</a>
+
+		<a class='btn btn-info' href='<?php echo $this->url('zf-beanstalkd/tupe-jobs-kick', ['tube' => $stats->__get('name'), 'count' => 10]); ?>'>
+			<?php echo $this->translate("Kick 10 buried (or delayed) jobs"); ?>
+		</a>
 	</div>
 </div>
 

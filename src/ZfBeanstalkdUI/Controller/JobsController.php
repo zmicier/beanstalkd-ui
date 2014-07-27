@@ -9,7 +9,47 @@ class JobsController extends AbstractActionController
 {
     public function indexAction() {}
 
-    public function createAction() {}
+    public function createAction() 
+    {
+        try {
+            $tube               =   $this->params()->fromRoute('tube', 'default');
+
+            $pheanstalk         =   $this->getServiceLocator()->get('ZfBeanstalkdUI\Service\PheanstalkService');
+            $pheanstalk->statsTube($tube);
+        } catch(\Pheanstalk_Exception_ServerException $e) {
+            $this->getResponse()->setStatusCode(404); return; 
+        } 
+
+        // Form
+        $form               =   new \ZfBeanstalkdUI\Form\Jobs\CreateForm();
+
+        if($this->getRequest()->isPost()) {
+            $form->setData($this->getRequest()->getPost());
+            
+            $profile            =   new \ZfBeanstalkdUI\Form\Jobs\Create();
+            $form->setInputFilter($profile->getInputFilter());
+            
+            // Check if the Form is valid
+            if($form->isValid()) {
+                try {                    
+                    // Insert a new job
+                    $pheanstalk->useTube($tube)->put(
+                        $this->getRequest()->getPost('data'), 
+                        $this->getRequest()->getPost('priority'), 
+                        $this->getRequest()->getPost('delay'), 
+                        $this->getRequest()->getPost('ttr')
+                    );
+                } catch(\Pheanstalk_Exception_ServerException $e) {
+                    $this->getResponse()->setStatusCode(404); return; 
+                } 
+
+                return $this->redirect()->toRoute('zf-beanstalkd/tupe', ['tube' => $tube]);
+            }
+        }
+
+        return new ViewModel(['form' => $form, 'tube' => $tube]);
+    }
+
     public function readAction() {}
     public function updateAction() {}
 
@@ -74,6 +114,20 @@ class JobsController extends AbstractActionController
         } catch(\Pheanstalk_Exception_ServerException $e) {
             $this->getResponse()->setStatusCode(404); return; 
         }
+
+        return $this->redirect()->toRoute('zf-beanstalkd/tupe', ['tube' => $tube]);
+    }
+
+    public function pauseAction() 
+    {
+        try {
+            $tube               =   $this->params()->fromRoute('tube', 'default');
+
+            $pheanstalk         =   $this->getServiceLocator()->get('ZfBeanstalkdUI\Service\PheanstalkService');
+            $pheanstalk->pauseTube($tube, 3600);
+        } catch(\Pheanstalk_Exception_ServerException $e) {
+            $this->getResponse()->setStatusCode(404); return; 
+        } 
 
         return $this->redirect()->toRoute('zf-beanstalkd/tupe', ['tube' => $tube]);
     }

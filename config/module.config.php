@@ -26,6 +26,19 @@ return array(
                             ),
                         ),
                     ),
+                    'tupe-jobs-create' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:tube]/jobs/create',
+                            'constraints' => array(
+                                'tube'  =>  '[a-z0-9]+',
+                            ),
+                            'defaults' => array(
+                                'controller' => 'ZfBeanstalkdUI\Controller\Jobs',
+                                'action'     => 'create',
+                            ),
+                        ),
+                    ),
                     'tupe-jobs-delete' => array(
                         'type' => 'Segment',
                         'options' => array(
