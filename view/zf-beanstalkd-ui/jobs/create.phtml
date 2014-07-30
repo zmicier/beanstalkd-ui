@@ -1,3 +1,8 @@
+<?php
+	$this->headTitle()->append('Create job');
+	$this->navigation('navigation')->breadcrumbs()->getContainer()->findOneBy('label', '[:tube]')->setLabel($tube)->setRoute('zf-beanstalkd/tube')->setParams(['tube' => $tube]);
+?>
+
 <div class='row'>	
 	<div class='col-md-12'>
 		<h2><?php echo $this->translate('Create job'); ?></h2>
@@ -5,7 +10,7 @@
 		<?php 
 			$form = $this->form;
 			$form->setAttribute('action', $this->url(
-			    'zf-beanstalkd/tupe-jobs-create', ['tube' => $tube]
+			    'zf-beanstalkd/tube-jobs-create', ['tube' => $tube]
 			));
 			$form->prepare();
 			echo $this->form()->openTag($form);

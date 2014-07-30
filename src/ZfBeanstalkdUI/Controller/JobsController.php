@@ -43,7 +43,7 @@ class JobsController extends AbstractActionController
                     $this->getResponse()->setStatusCode(404); return; 
                 } 
 
-                return $this->redirect()->toRoute('zf-beanstalkd/tupe', ['tube' => $tube]);
+                return $this->redirect()->toRoute('zf-beanstalkd/tube', ['tube' => $tube]);
             }
         }
 
@@ -67,7 +67,7 @@ class JobsController extends AbstractActionController
             $this->getResponse()->setStatusCode(404); return; 
         } 
 
-        return $this->redirect()->toRoute('zf-beanstalkd/tupe', ['tube' => $tube]);
+        return $this->redirect()->toRoute('zf-beanstalkd/tube', ['tube' => $tube]);
     }
 
     public function moveAction() 
@@ -98,7 +98,7 @@ class JobsController extends AbstractActionController
             $this->getResponse()->setStatusCode(404); return; 
         } 
 
-        return $this->redirect()->toRoute('zf-beanstalkd/tupe', ['tube' => $tube]);
+        return $this->redirect()->toRoute('zf-beanstalkd/tube', ['tube' => $tube]);
     }
 
     public function deleteAction() 
@@ -115,7 +115,7 @@ class JobsController extends AbstractActionController
             $this->getResponse()->setStatusCode(404); return; 
         }
 
-        return $this->redirect()->toRoute('zf-beanstalkd/tupe', ['tube' => $tube]);
+        return $this->redirect()->toRoute('zf-beanstalkd/tube', ['tube' => $tube]);
     }
 
     public function pauseAction() 
@@ -129,7 +129,7 @@ class JobsController extends AbstractActionController
             $this->getResponse()->setStatusCode(404); return; 
         } 
 
-        return $this->redirect()->toRoute('zf-beanstalkd/tupe', ['tube' => $tube]);
+        return $this->redirect()->toRoute('zf-beanstalkd/tube', ['tube' => $tube]);
     }
 
     public function searchAction() {}
