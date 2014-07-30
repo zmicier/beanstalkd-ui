@@ -13,7 +13,7 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
-                    'tupe' => array(
+                    'tube' => array(
                         'type' => 'Segment',
                         'options' => array(
                             'route'    => '/[:tube]',
@@ -26,7 +26,7 @@ return array(
                             ),
                         ),
                     ),
-                    'tupe-jobs-create' => array(
+                    'tube-jobs-create' => array(
                         'type' => 'Segment',
                         'options' => array(
                             'route'    => '/[:tube]/jobs/create',
@@ -39,7 +39,7 @@ return array(
                             ),
                         ),
                     ),
-                    'tupe-jobs-delete' => array(
+                    'tube-jobs-delete' => array(
                         'type' => 'Segment',
                         'options' => array(
                             'route'    => '/[:tube]/jobs/[:id]/delete',
@@ -53,7 +53,7 @@ return array(
                             ),
                         ),
                     ),
-                    'tupe-jobs-move' => array(
+                    'tube-jobs-move' => array(
                         'type' => 'Segment',
                         'options' => array(
                             'route'    => '/[:tube]/jobs/[:id]/move/[:from]/[:to]',
@@ -69,7 +69,7 @@ return array(
                             ),
                         ),
                     ),
-                    'tupe-jobs-kick' => array(
+                    'tube-jobs-kick' => array(
                         'type' => 'Segment',
                         'options' => array(
                             'route'    => '/[:tube]/jobs/[:count]/kick',
@@ -103,5 +103,25 @@ return array(
             'ZfBeanstalkdUI\Options\BeanstalkdOptions' => 'ZfBeanstalkdUI\Factory\BeanstalkdOptionsFactory',
             'ZfBeanstalkdUI\Service\PheanstalkService' => 'ZfBeanstalkdUI\Factory\PheanstalkFactory',
         )
-    )
+    ),
+    'navigation' => array(
+        'default' => array(
+            'zf-beanstalkd' =>  array(
+                'label'     =>  'Beanstalkd',
+                'route'     =>  'zf-beanstalkd',
+                'pages'     =>  array(
+                    array(
+                        'label'     =>  '[:tube]',
+                        'route'     =>  'zf-beanstalkd/tube',
+                        'pages'     =>  array(
+                            array(
+                                'label'     =>  'Create job',
+                                'route'     =>  'zf-beanstalkd/tube-jobs-create'
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+        ),
+    ),
 );

@@ -1,3 +1,8 @@
+<?php
+	$this->headTitle()->append($stats->__get('name'));
+	$this->navigation('navigation')->breadcrumbs()->getContainer()->findOneBy('label', '[:tube]')->setLabel($stats->__get('name'));
+?>
+
 <div class='row'>
 	<div class='col-md-12'>
 		<h2><?php echo($stats->__get('name')); ?></h2>
@@ -30,11 +35,11 @@
 	</div>
 
 	<div class='col-md-12'>
-		<a class='btn btn-success' href='<?php echo $this->url('zf-beanstalkd/tupe-jobs-create', ['tube' => $stats->__get('name')]); ?>'>
+		<a class='btn btn-success' href='<?php echo $this->url('zf-beanstalkd/tube-jobs-create', ['tube' => $stats->__get('name')]); ?>'>
 			<?php echo $this->translate("Create job"); ?>
 		</a>
 
-		<a class='btn btn-info' href='<?php echo $this->url('zf-beanstalkd/tupe-jobs-kick', ['tube' => $stats->__get('name'), 'count' => 10]); ?>'>
+		<a class='btn btn-info' href='<?php echo $this->url('zf-beanstalkd/tube-jobs-kick', ['tube' => $stats->__get('name'), 'count' => 10]); ?>'>
 			<?php echo $this->translate("Kick 10 buried (or delayed) jobs"); ?>
 		</a>
 	</div>
@@ -88,11 +93,11 @@
 					<pre><code><?php print_r(json_decode($ready->getData(), true)); ?></code></pre>
 
 					<div class='pull-right'>
-						<a class='btn btn-info' href='<?php echo $this->url('zf-beanstalkd/tupe-jobs-move', ['tube' => $stats->__get('name'), 'id'=> $pheanstalk->statsJob($ready->getId())->__get('id'), 'from' => 'ready', 'to' => 'buried']); ?>'>
+						<a class='btn btn-info' href='<?php echo $this->url('zf-beanstalkd/tube-jobs-move', ['tube' => $stats->__get('name'), 'id'=> $pheanstalk->statsJob($ready->getId())->__get('id'), 'from' => 'ready', 'to' => 'buried']); ?>'>
 							<?php echo $this->translate("Bury the job"); ?>
 						</a>
 
-						<a class='btn btn-danger' href='<?php echo $this->url('zf-beanstalkd/tupe-jobs-delete', ['tube' => $stats->__get('name'), 'id'=> $pheanstalk->statsJob($ready->getId())->__get('id')]); ?>'>
+						<a class='btn btn-danger' href='<?php echo $this->url('zf-beanstalkd/tube-jobs-delete', ['tube' => $stats->__get('name'), 'id'=> $pheanstalk->statsJob($ready->getId())->__get('id')]); ?>'>
 							<?php echo $this->translate("Delete"); ?>
 						</a>
 					</div>
@@ -150,11 +155,11 @@
 					<pre><code><?php print_r(json_decode($delayed->getData(), true)); ?></code></pre>
 
 					<div class='pull-right'>
-						<a class='btn btn-info' href='<?php echo $this->url('zf-beanstalkd/tupe-jobs-kick', ['tube' => $stats->__get('name'), 'count' => 10]); ?>'>
+						<a class='btn btn-info' href='<?php echo $this->url('zf-beanstalkd/tube-jobs-kick', ['tube' => $stats->__get('name'), 'count' => 10]); ?>'>
 							<?php echo $this->translate("Kick 10 buried (or delayed) jobs"); ?>
 						</a>
 
-						<a class='btn btn-danger' href='<?php echo $this->url('zf-beanstalkd/tupe-jobs-delete', ['tube' => $stats->__get('name'), 'id'=> $pheanstalk->statsJob($delayed->getId())->__get('id')]); ?>'>
+						<a class='btn btn-danger' href='<?php echo $this->url('zf-beanstalkd/tube-jobs-delete', ['tube' => $stats->__get('name'), 'id'=> $pheanstalk->statsJob($delayed->getId())->__get('id')]); ?>'>
 							<?php echo $this->translate("Delete"); ?>
 						</a>
 					</div>
@@ -212,11 +217,11 @@
 					<pre><code><?php print_r(json_decode($buried->getData(), true)); ?></code></pre>
 
 					<div class='pull-right'>
-						<a class='btn btn-info' href='<?php echo $this->url('zf-beanstalkd/tupe-jobs-kick', ['tube' => $stats->__get('name'), 'count' => 10]); ?>'>
+						<a class='btn btn-info' href='<?php echo $this->url('zf-beanstalkd/tube-jobs-kick', ['tube' => $stats->__get('name'), 'count' => 10]); ?>'>
 							<?php echo $this->translate("Kick 10 buried (or delayed) jobs"); ?>
 						</a>
 
-						<a class='btn btn-danger' href='<?php echo $this->url('zf-beanstalkd/tupe-jobs-delete', ['tube' => $stats->__get('name'), 'id'=> $pheanstalk->statsJob($buried->getId())->__get('id')]); ?>'>
+						<a class='btn btn-danger' href='<?php echo $this->url('zf-beanstalkd/tube-jobs-delete', ['tube' => $stats->__get('name'), 'id'=> $pheanstalk->statsJob($buried->getId())->__get('id')]); ?>'>
 							<?php echo $this->translate("Delete"); ?>
 						</a>
 					</div>
