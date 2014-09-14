@@ -11,6 +11,7 @@ php composer.phar require nickurt/beanstalkd-ui:dev-master
 
 ### Requirements
 
+* PHP5.4+
 * [Zend Framework 2.3.*](https://github.com/zendframework/zf2)
 * [Pda Pheanstalk](https://github.com/pda/pheanstalk)
 * [SlmQueue](https://github.com/juriansluiman/SlmQueue) (optional)
