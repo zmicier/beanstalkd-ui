@@ -13,14 +13,14 @@ class CreateForm extends \Zend\Form\Form
             'attributes' => [
                 'type'          =>  'textarea',
                 'class'         =>  'form-control',
-				'placeholder'   =>  'MyJob',
+                'placeholder'   =>  'MyJob',
                 'id'            =>  'data',
                 'required'      =>  true,
                 'rows'          =>  6,
             ],
             'options' => [
-                'label' 		=> 	'Data',
-            	'errorClass'	=> 	'list-unstyled alert alert-danger'	
+                'label'         =>  'Data',
+                'errorClass'    =>  'list-unstyled alert alert-danger'	
             ],   
         ]);
 
@@ -75,10 +75,10 @@ class CreateForm extends \Zend\Form\Form
         $this->add([
             'name' => 'submit',
             'attributes' => [
-                'type'  	=> 'submit',
-                'value' 	=> 'Save',
-                'id' 		=> 'submit',
-            	'class'		=> 'btn btn-success',
+                'type'          =>  'submit',
+                'value'         =>  'Save',
+                'id'            =>  'submit',
+                'class'         =>  'btn btn-success',
             ],
         ]);
     }
