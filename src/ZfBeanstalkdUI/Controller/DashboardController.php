@@ -12,15 +12,15 @@ class DashboardController extends AbstractActionController
         $pheanstalk         =   $this->getServiceLocator()->get('ZfBeanstalkdUI\Service\PheanstalkService');
         $tubes              =   $pheanstalk->listTubes();
 
-        $stats              =   array();
+        $stats              =   [];
 
         foreach($tubes as $tube) {
             $stats[]        =      $pheanstalk->statsTube($tube);
         }
 
-        return new ViewModel(array(
+        return new ViewModel([
             'stats'         =>  $stats
-        ));
+        ]);
     }
 
     public function tubeAction() 
@@ -39,12 +39,12 @@ class DashboardController extends AbstractActionController
             return $this->redirect()->toRoute('zf-beanstalkd');
         }
 
-        return new ViewModel(array(
+        return new ViewModel([
             'stats'         =>  $stats, 
             'ready'         =>  $ready, 
             'delayed'       =>  $delayed, 
             'buried'        =>  $buried,
             'pheanstalk'    =>  $pheanstalk,
-        ));
+        ]);
     }
 }

@@ -8,7 +8,7 @@
         "beanstalkd admin"
     ],
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.4.0",
         "pda/pheanstalk": "2.*"
     },
     "suggest": {

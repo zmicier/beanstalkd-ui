@@ -1,12 +1,12 @@
 <?php
-return array(
-    'zf-beanstalkd' => array(
-        'beanstalkd' => array(
-            'connection' => array(
+return [
+    'zf-beanstalkd' => [
+        'beanstalkd' => [
+            'connection' => [
                 // 'host'       =>  '0.0.0.0',
                 // 'port'       =>  11300,
                 // 'timeout'    =>  2
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];

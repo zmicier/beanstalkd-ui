@@ -1,127 +1,127 @@
 <?php
-return array(
-    'router' => array(
-        'routes' => array(
-            'zf-beanstalkd' => array(
+return [
+    'router' => [
+        'routes' => [
+            'zf-beanstalkd' => [
                 'type' => 'Literal',
-                'options' => array(
+                'options' => [
                     'route'    => '/beanstalkd',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'ZfBeanstalkdUI\Controller\Dashboard',
                         'action'     => 'index',
-                    ),
-                ),
+                    ],
+                ],
                 'may_terminate' => true,
-                'child_routes' => array(
-                    'tube' => array(
+                'child_routes' => [
+                    'tube' => [
                         'type' => 'Segment',
-                        'options' => array(
+                        'options' => [
                             'route'    => '/[:tube]',
-                            'constraints' => array(
+                            'constraints' => [
                                 'tube'  =>  '[a-z0-9]+',
-                            ),
-                            'defaults' => array(
+                            ],
+                            'defaults' => [
                                 'controller' => 'ZfBeanstalkdUI\Controller\Dashboard',
                                 'action'     => 'tube',
-                            ),
-                        ),
-                    ),
-                    'tube-jobs-create' => array(
+                            ],
+                        ],
+                    ],
+                    'tube-jobs-create' => [
                         'type' => 'Segment',
-                        'options' => array(
+                        'options' => [
                             'route'    => '/[:tube]/jobs/create',
-                            'constraints' => array(
+                            'constraints' => [
                                 'tube'  =>  '[a-z0-9]+',
-                            ),
-                            'defaults' => array(
+                            ],
+                            'defaults' => [
                                 'controller' => 'ZfBeanstalkdUI\Controller\Jobs',
                                 'action'     => 'create',
-                            ),
-                        ),
-                    ),
-                    'tube-jobs-delete' => array(
+                            ],
+                        ],
+                    ],
+                    'tube-jobs-delete' => [
                         'type' => 'Segment',
-                        'options' => array(
+                        'options' => [
                             'route'    => '/[:tube]/jobs/[:id]/delete',
-                            'constraints' => array(
+                            'constraints' => [
                                 'tube'  =>  '[a-z0-9]+',
                                 'id'    =>  '[0-9]+',
-                            ),
-                            'defaults' => array(
+                            ],
+                            'defaults' => [
                                 'controller' => 'ZfBeanstalkdUI\Controller\Jobs',
                                 'action'     => 'delete',
-                            ),
-                        ),
-                    ),
-                    'tube-jobs-move' => array(
+                            ],
+                        ],
+                    ],
+                    'tube-jobs-move' => [
                         'type' => 'Segment',
-                        'options' => array(
+                        'options' => [
                             'route'    => '/[:tube]/jobs/[:id]/move/[:from]/[:to]',
-                            'constraints' => array(
+                            'constraints' => [
                                 'tube'  =>  '[a-z0-9]+',
                                 'id'    =>  '[0-9]+',
                                 'from'  =>  '(ready)',
                                 'to'    =>  '(buried)',
-                            ),
-                            'defaults' => array(
+                            ],
+                            'defaults' => [
                                 'controller' => 'ZfBeanstalkdUI\Controller\Jobs',
                                 'action'     => 'move',
-                            ),
-                        ),
-                    ),
-                    'tube-jobs-kick' => array(
+                            ],
+                        ],
+                    ],
+                    'tube-jobs-kick' => [
                         'type' => 'Segment',
-                        'options' => array(
+                        'options' => [
                             'route'    => '/[:tube]/jobs/[:count]/kick',
-                            'constraints' => array(
+                            'constraints' => [
                                 'tube'  =>  '[a-z0-9]+',
                                 'count' =>  '[0-9]+',
-                            ),
-                            'defaults' => array(
+                            ],
+                            'defaults' => [
                                 'controller' => 'ZfBeanstalkdUI\Controller\Jobs',
                                 'action'     => 'kick',
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'controllers' => [
+        'invokables' => [
             'ZfBeanstalkdUI\Controller\Dashboard'   =>  'ZfBeanstalkdUI\Controller\DashboardController',
             'ZfBeanstalkdUI\Controller\Jobs'        =>  'ZfBeanstalkdUI\Controller\JobsController'
-        ),
-    ), 
-    'view_manager' => array(
-        'template_path_stack' => array(
+        ],
+    ], 
+    'view_manager' => [
+        'template_path_stack' => [
             __DIR__ . '/../view',
-        ),
-    ),
-    'service_manager' => array(
-        'factories' => array(
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
             'ZfBeanstalkdUI\Options\BeanstalkdOptions' => 'ZfBeanstalkdUI\Factory\BeanstalkdOptionsFactory',
             'ZfBeanstalkdUI\Service\PheanstalkService' => 'ZfBeanstalkdUI\Factory\PheanstalkFactory',
-        )
-    ),
-    'navigation' => array(
-        'default' => array(
-            'zf-beanstalkd' =>  array(
+        ]
+    ],
+    'navigation' => [
+        'default' => [
+            'zf-beanstalkd' =>  [
                 'label'     =>  'Beanstalkd',
                 'route'     =>  'zf-beanstalkd',
-                'pages'     =>  array(
-                    array(
+                'pages'     =>  [
+                    [
                         'label'     =>  '[:tube]',
                         'route'     =>  'zf-beanstalkd/tube',
-                        'pages'     =>  array(
-                            array(
+                        'pages'     =>  [
+                            [
                                 'label'     =>  'Create job',
                                 'route'     =>  'zf-beanstalkd/tube-jobs-create'
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    ),
-);
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+];

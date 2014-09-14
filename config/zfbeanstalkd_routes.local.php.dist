@@ -1,16 +1,16 @@
 <?php
-return array(
-    'router' => array(
-        'routes' => array(
-            'zf-beanstalkd' => array(
-                'options' => array(
+return [
+    'router' => [
+        'routes' => [
+            'zf-beanstalkd' => [
+                'options' => [
                     'route' => '/zf-beanstalkd',
-                ),
-                'defaults' => array(
+                ],
+                'defaults' => [
                     'controller'    => 'ZfBeanstalkdUI\Controller\Dashboard',
                     'action'        => 'index',
-                ),
-            )
-        )
-    )    
-);
+                ],
+            ]
+        ]
+    ]    
+];

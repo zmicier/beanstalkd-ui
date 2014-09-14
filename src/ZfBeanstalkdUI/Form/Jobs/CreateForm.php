@@ -11,11 +11,11 @@ class CreateForm extends \Zend\Form\Form
         $this->add([
             'name' => 'data',
             'attributes' => [
-                'type'  		=> 	'textarea',
-            	'class'			=> 	'form-control',
-				'placeholder' 	=> 	'MyJob',
-            	'id'			=>	'data',
-            	'required'   	=> 	true,
+                'type'          =>  'textarea',
+                'class'         =>  'form-control',
+				'placeholder'   =>  'MyJob',
+                'id'            =>  'data',
+                'required'      =>  true,
                 'rows'          =>  6,
             ],
             'options' => [
@@ -71,16 +71,6 @@ class CreateForm extends \Zend\Form\Form
                 'errorClass'    =>  'list-unstyled alert alert-danger'  
             ],
         ]);
-        
-       	$this->add([
-	   		'type' => 'Zend\Form\Element\Csrf',
-		    'name' => 'token',
-		    'options' => [
-		        'csrf_options' => [
-		            'timeout' => 600
-		        ]
-		    ]
-		]);
         
         $this->add([
             'name' => 'submit',
