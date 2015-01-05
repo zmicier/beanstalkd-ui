@@ -4,6 +4,7 @@ namespace ZfBeanstalkdUI\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Pheanstalk\Pheanstalk;
+use Pheanstalk\Exception as PheanstalkException;
 
 class JobsController extends AbstractActionController
 {
@@ -16,7 +17,7 @@ class JobsController extends AbstractActionController
 
             $pheanstalk         =   $this->getServiceLocator()->get('ZfBeanstalkdUI\Service\PheanstalkService');
             $pheanstalk->statsTube($tube);
-        } catch(\Pheanstalk_Exception_ServerException $e) {
+        } catch(PheanstalkException\ServerException $e) {
             $this->getResponse()->setStatusCode(404); return; 
         } 
 
@@ -39,7 +40,7 @@ class JobsController extends AbstractActionController
                         $this->getRequest()->getPost('delay'), 
                         $this->getRequest()->getPost('ttr')
                     );
-                } catch(\Pheanstalk_Exception_ServerException $e) {
+                } catch(PheanstalkException\ServerException $e) {
                     $this->getResponse()->setStatusCode(404); return; 
                 } 
 
@@ -63,7 +64,7 @@ class JobsController extends AbstractActionController
         try {
             $pheanstalk         =   $this->getServiceLocator()->get('ZfBeanstalkdUI\Service\PheanstalkService');
             $pheanstalk->useTube($tube)->kick( $count );
-        } catch(\Pheanstalk_Exception_ServerException $e) {
+        } catch(PheanstalkException\ServerException $e) {
             $this->getResponse()->setStatusCode(404); return; 
         } 
 
@@ -94,7 +95,7 @@ class JobsController extends AbstractActionController
                     break;
             }
 
-        } catch(\Pheanstalk_Exception_ServerException $e) {
+        } catch(PheanstalkException\ServerException $e) {
             $this->getResponse()->setStatusCode(404); return; 
         } 
 
@@ -111,7 +112,7 @@ class JobsController extends AbstractActionController
 
             $job                =   $pheanstalk->useTube($tube)->peek($id);
             $pheanstalk->delete($job);
-        } catch(\Pheanstalk_Exception_ServerException $e) {
+        } catch(PheanstalkException\ServerException $e) {
             $this->getResponse()->setStatusCode(404); return; 
         }
 
@@ -125,7 +126,7 @@ class JobsController extends AbstractActionController
 
             $pheanstalk         =   $this->getServiceLocator()->get('ZfBeanstalkdUI\Service\PheanstalkService');
             $pheanstalk->pauseTube($tube, 3600);
-        } catch(\Pheanstalk_Exception_ServerException $e) {
+        } catch(PheanstalkException\ServerException $e) {
             $this->getResponse()->setStatusCode(404); return; 
         } 
 
