@@ -9,7 +9,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "pda/pheanstalk": "~3.*"
+        "pda/pheanstalk": "~3.0"
     },
     "suggest": {
         "slm/queue": "Job queue abstraction layer",
